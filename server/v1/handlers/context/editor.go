@@ -16,8 +16,6 @@ import (
 	"strings"
 )
 
-const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-
 type TextChars int
 
 const (
@@ -204,42 +202,3 @@ func (rd *Editor) Save() (string, int) {
 	encodedStr := base64.StdEncoding.EncodeToString(buf.Bytes())
 	return encodedStr, http.StatusOK
 }
-
-// Deprecated
-
-//func (rd *Editor) TruncateText(text string, points int64) string {
-//	var truncatedName string
-//
-//	if len(text) > int(points) {
-//		truncatedName = strings.ToUpper(text[:points]) + "..."
-//	} else {
-//		truncatedName = strings.ToUpper(text)
-//	}
-//
-//	return truncatedName
-//}
-
-//func (rd *Editor) Save() (string, int) {
-//	controllers.HasCacheFolder()
-//
-//	dir, _ := os.Getwd()
-//	path := dir + "/cache/"
-//
-//	seededRand := rand.New(rand.NewSource(time.Now().UnixNano()))
-//	b := make([]byte, 16)
-//	for i := range b {
-//		b[i] = charset[seededRand.Intn(len(charset))]
-//	}
-//
-//	rd.Context.Image()
-//
-//	filePath := filepath.Join(path, string(b)+".png")
-//	defer func(Context *gg.Context, path string) {
-//		err := Context.SavePNG(path)
-//		if err != nil {
-//			return
-//		}
-//	}(rd.Context, filePath)
-//
-//	return filePath, http.StatusOK
-//}

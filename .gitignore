@@ -27,5 +27,7 @@ go.work.sum
 ./build
 build
 logrus.txt
-./.idea
+.idea/
 .idea
+
+images.zip
